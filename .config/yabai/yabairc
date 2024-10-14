@@ -1,0 +1,40 @@
+# Load scripting addon
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# refresh simplebar on yabai relaunch
+osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
+
+# enable tiling by default
+yabai -m config layout bsp
+
+# window padding 10
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10
+
+# transparent windows
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 0.99
+yabai -m config normal_window_opacity 0.95
+
+# sketchybar padding
+yabai -m config external_bar main:32:0
+
+# mouse support
+# set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier cmd
+# set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse autoraise
+
+# app rules
+yabai -m rule --add app="^System Settings$" manage=off
