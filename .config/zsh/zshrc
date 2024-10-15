@@ -18,3 +18,8 @@ export EDITOR='nvim'
 
 # Load powerlevel10k, to customize prompt, run `p10k configure` or edit ~/.config/p10k/p10k.zsh.
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
